@@ -3,20 +3,21 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from './Home';
 import Categories from './Categories';
+import Favourites from './Favourites';
 
 const Tab = createMaterialBottomTabNavigator();
 
 const MyTabs = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Products"
       activeColor="#000000"
       barStyle={{backgroundColor: 'white'}}>
       <Tab.Screen
-        name="Home"
+        name="Products"
         component={Home}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: 'Products',
           tabBarIcon: ({color}) => (
             <MaterialCommunityIcons name="home" color={color} size={26} />
           ),
@@ -28,7 +29,17 @@ const MyTabs = () => {
         options={{
           tabBarLabel: 'Categories',
           tabBarIcon: ({color}) => (
-            <MaterialCommunityIcons name="bell" color={color} size={26} />
+            <MaterialCommunityIcons name="shopping" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Favourites"
+        component={Favourites}
+        options={{
+          tabBarLabel: 'Favourites',
+          tabBarIcon: ({color}) => (
+            <MaterialCommunityIcons name="heart" color={color} size={26} />
           ),
         }}
       />
