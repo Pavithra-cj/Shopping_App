@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginVertical: 5,
+    color: '#000000',
   },
   imageWrapper: {
     flex: 1,
