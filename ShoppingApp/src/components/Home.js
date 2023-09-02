@@ -8,8 +8,10 @@ import {
   ActivityIndicator,
   FlatList,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
+import {useFavouriteContext} from './context/favouriteContext';
 
 const styles = StyleSheet.create({
   root: {
@@ -25,6 +27,10 @@ const styles = StyleSheet.create({
   image: {
     width: 180,
     height: 180,
+  },
+  imageAndButttonWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   wrapper: {
     alignItems: 'center',
@@ -45,11 +51,20 @@ const styles = StyleSheet.create({
   imageWrapper: {
     flex: 1,
   },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#272ef2',
+    padding: 10,
+  },
+  buttonText: {
+    color: '#ffffff',
+  },
 });
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const {addToFavouriteHandler} = useFavouriteContext();
 
   useEffect(() => {
     setLoading(true);
@@ -65,17 +80,26 @@ const Home = () => {
 
   const renderItem = ({item}) => (
     <View style={styles.wrapper}>
-      <View style={styles.imageWrapper}>
-        <Image
-          source={{uri: item.image}}
-          style={styles.image}
-          resizeMode="contain"
-        />
+      <View style={styles.imageAndButttonWrapper}>
+        <View style={styles.imageWrapper}>
+          <Image
+            source={{uri: item.image}}
+            style={styles.image}
+            resizeMode="contain"
+          />
+        </View>
+        <View>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => addToFavouriteHandler(item)}>
+            <Text style={styles.buttonText}>Add to Favourites</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.textWrapper}>
         <Text style={styles.text}>{item.title}</Text>
         <Text style={styles.text}>{item.description}</Text>
-        <Text style={styles.text}>{item.price}</Text>
+        <Text style={styles.text}>{`Price: ${item.price}$`}</Text>
       </View>
     </View>
   );
