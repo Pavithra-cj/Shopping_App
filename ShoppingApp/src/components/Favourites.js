@@ -8,6 +8,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 5,
     backgroundColor: '#ffffff',
+    text: {
+      marginVertical: 5,
+      color: '#000000',
+    },
   },
 });
 
@@ -15,10 +19,14 @@ const Favourites = () => {
   const {favourites} = useFavouriteContext();
 
   return (
-    <SafeAreaView>
-      <View>
-        <Text>Favourites</Text>
-      </View>
+    <SafeAreaView style={styles.root}>
+      {Favourites.length > 0 ? (
+        <FlatList />
+      ) : (
+        <View>
+          <Text>Favourites</Text>
+        </View>
+      )}
     </SafeAreaView>
   );
 };
