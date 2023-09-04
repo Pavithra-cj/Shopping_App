@@ -11,7 +11,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
-import {useFavouriteContext} from './context/favouriteContext';
 
 const styles = StyleSheet.create({
   root: {
@@ -28,7 +27,12 @@ const styles = StyleSheet.create({
     width: 180,
     height: 180,
   },
-  imageAndButttonWrapper: {
+  txtBtnWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '65%',
+  },
+  imgWrapper: {
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -43,28 +47,42 @@ const styles = StyleSheet.create({
   },
   textWrapper: {
     flex: 1,
+    alignItems: 'center',
+    width: '70%'
   },
   text: {
     marginVertical: 5,
     color: '#000000',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+  titleText: {
+    marginVertical: 5,
+    color: '#000000',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    fontSize: 20,
   },
   imageWrapper: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   button: {
     alignItems: 'center',
     backgroundColor: '#272ef2',
     padding: 10,
+    width: '75%',
   },
   buttonText: {
     color: '#ffffff',
+    fontSize: 16,
   },
 });
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const {addToFavouriteHandler} = useFavouriteContext();
 
   useEffect(() => {
     setLoading(true);
@@ -80,7 +98,7 @@ const Home = () => {
 
   const renderItem = ({item}) => (
     <View style={styles.wrapper}>
-      <View style={styles.imageAndButttonWrapper}>
+      <View style={styles.imgWrapper}>
         <View style={styles.imageWrapper}>
           <Image
             source={{uri: item.image}}
@@ -88,18 +106,19 @@ const Home = () => {
             resizeMode="contain"
           />
         </View>
-        <View>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => addToFavouriteHandler(item)}>
-            <Text style={styles.buttonText}>Add to Favourites</Text>
-          </TouchableOpacity>
-        </View>
       </View>
-      <View style={styles.textWrapper}>
-        <Text style={styles.text}>{item.title}</Text>
+      <View style={styles.txtBtnWrapper}>
+        <View style={styles.textWrapper}>
+        <Text style={styles.titleText}>{item.title}</Text>
         <Text style={styles.text}>{item.description}</Text>
         <Text style={styles.text}>{`Price: ${item.price}$`}</Text>
+      </View>
+      <View>
+          <TouchableOpacity
+            style={styles.button}>
+            <Text style={styles.buttonText}>Add to Cart</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

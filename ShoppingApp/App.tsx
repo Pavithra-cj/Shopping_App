@@ -9,14 +9,13 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import MyTabs from './src/components/TabNavigation';
-import FavouriteContextProvider from './src/components/context/favouriteContext';
+import HeaderBar from './src/components/HeaderBar';
 
 function App(): JSX.Element {
   return (
     <NavigationContainer>
-      <FavouriteContextProvider>
+        <HeaderBar />
         <MyTabs />
-      </FavouriteContextProvider>
     </NavigationContainer>
   );
 }
