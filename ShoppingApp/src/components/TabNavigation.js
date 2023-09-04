@@ -1,9 +1,9 @@
 import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Home from './Home';
-import Categories from './Categories';
-import Favourites from './Favourites';
+import Home from '../Screen/Home';
+import Categories from '../Screen/Categories';
+import Cart from '../Screen/Cart';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -34,12 +34,12 @@ const MyTabs = () => {
         }}
       />
       <Tab.Screen
-        name="Favourites"
-        component={Favourites}
+        name="Cart"
+        component={Cart}
         options={{
-          tabBarLabel: 'Favourites',
+          tabBarLabel: 'Cart',
           tabBarIcon: ({color}) => (
-            <MaterialCommunityIcons name="heart" color={color} size={26} />
+            <MaterialCommunityIcons name="cart" color={color} size={26} />
           ),
         }}
       />
