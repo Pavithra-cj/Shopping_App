@@ -78,6 +78,10 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 16,
   },
+  priceText: {
+    color: '#e82365',
+    fontSize: 30,
+  },
 });
 
 const Home = () => {
@@ -111,7 +115,7 @@ const Home = () => {
         <View style={styles.textWrapper}>
         <Text style={styles.titleText}>{item.title}</Text>
         <Text style={styles.text}>{item.description}</Text>
-        <Text style={styles.text}>{`Price: ${item.price}$`}</Text>
+        <Text style={styles.priceText}>{`Price: ${item.price}$`}</Text>
       </View>
       <View>
           <TouchableOpacity

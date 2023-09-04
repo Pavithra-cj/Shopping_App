@@ -1,9 +1,9 @@
 import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Home from './Home';
-import Categories from './Categories';
-import Cart from './Cart';
+import Home from '../Screen/Home';
+import Categories from '../Screen/Categories';
+import Cart from '../Screen/Cart';
 
 const Tab = createMaterialBottomTabNavigator();
 
